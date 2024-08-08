@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyBktyGKI3Levf2YbDBPpelCQij5gzQ8wso</string>
+	<string>AIzaSyCakIRvjd8chkeF85c9eJZlypS9m0Q3WzI</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1032908756397</string>
+	<string>807048036711</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.lumi.clips</string>
+	<string>com.mtai.silicon</string>
 	<key>PROJECT_ID</key>
-	<string>lumiclips-2ee1f</string>
+	<string>silicon-user-interface-d5aa8</string>
 	<key>STORAGE_BUCKET</key>
-	<string>lumiclips-2ee1f.appspot.com</string>
+	<string>silicon-user-interface-d5aa8.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1032908756397:ios:44500f43652bfdca81bd24</string>
+	<string>1:807048036711:ios:e72eb5647c1a24b13aefc2</string>
 </dict>
 </plist>

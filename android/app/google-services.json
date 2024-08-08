@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "1032908756397",
-    "project_id": "lumiclips-2ee1f",
-    "storage_bucket": "lumiclips-2ee1f.appspot.com"
+    "project_number": "807048036711",
+    "project_id": "silicon-user-interface-d5aa8",
+    "storage_bucket": "silicon-user-interface-d5aa8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1032908756397:android:010a4b5cac20ee1d81bd24",
+        "mobilesdk_app_id": "1:807048036711:android:f2e730f6829075023aefc2",
         "android_client_info": {
-          "package_name": "com.lumi.clips"
+          "package_name": "com.mtai.silicon"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDNDYVk3rSjfLZa4WUnDaBIHm46tlDTWB4"
+          "current_key": "AIzaSyCwD6P2OeY8Z3n7JlbOywusFR2CQs3lBjk"
         }
       ],
       "services": {
