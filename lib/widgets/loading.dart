@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
-import '../resources/res.dart';
+import '../helpers/exports.dart';
 
 class Loading extends StatelessWidget {
   const Loading({super.key, this.color, this.size, this.text, this.textColor});

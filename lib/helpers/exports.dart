@@ -1,9 +1,9 @@
 // export '../controllers/controllers.dart';
 // export '../services/services.dart';
-export './colors/app_colors.dart';
-export './fonts/app_fonts.dart';
+export 'colors/app_colors.dart';
+export 'fonts/app_fonts.dart';
 // export './../utils/loadingSkeleton/skeleton.dart';
-export './textStyles/app_text_style.dart';
+export 'textStyles/app_text_style.dart';
 // export './widgets/cache_network_image.dart';
 // export './widgets/custom_app_bar.dart';
 // export './widgets/custom_elevated_button.dart';

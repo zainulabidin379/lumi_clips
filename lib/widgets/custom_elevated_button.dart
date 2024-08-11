@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../resources/res.dart';
+import '../helpers/exports.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({

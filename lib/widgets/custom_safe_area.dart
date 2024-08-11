@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lumi_clips/resources/res.dart';
+import 'package:lumi_clips/helpers/exports.dart';
 
 class CustomSafeArea extends StatelessWidget {
   final Widget child;

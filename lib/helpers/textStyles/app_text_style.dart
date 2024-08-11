@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../res.dart';
+import '../exports.dart';
 
 class AppTextStyle {
   /// 22 - White - Bold

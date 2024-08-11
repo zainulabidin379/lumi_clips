@@ -1,14 +1,19 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:lumi_clips/services/notifications/notification.dart';
 import 'package:lumi_clips/widgets/custom_safe_area.dart';
 
 import '../../firebase_options.dart';
-import '../../resources/res.dart';
+import '../../helpers/exports.dart';
+import '../../main.dart';
 import '../home/home.dart';
+import '../videoPreview/video_preview.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  final String? url;
+  const SplashScreen({super.key, this.url});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -23,20 +28,19 @@ class _SplashScreenState extends State<SplashScreen> {
       "Firebase Initialized".log();
       await Hive.initFlutter();
       await Hive.openBox("localDb");
-      Future.delayed(const Duration(seconds: 3), () async {
-        context.pushReplacement(const HomeScreen());
-        // if (auth.currentUser != null) {
-        //   await Get.putAsync<UserDataController>(() async => await UserDataController().init());
-        //   Get.put(AdsController());
-        //   Get.offAll(() => const BottomNav());
-        // } else {
-        //   if (LocalDb.onboardingViewed) {
-        //     Get.offAll(() => const LoginScreen());
-        //   } else {
-        //     Get.offAll(() => const OnBoardingScreen());
-        //   }
-        // }
-      });
+      await LocalDb.setUid();
+      await LocalNotifications.init();
+      1.delay();
+
+      if (widget.url != null) {
+        await navigatorKey.currentState?.push(MaterialPageRoute<void>(
+          builder: (BuildContext context) => VideoPreview(url: widget.url!),
+        ));
+      } else {
+        await navigatorKey.currentState?.push(MaterialPageRoute<void>(
+          builder: (BuildContext context) => const HomeScreen(),
+        ));
+      }
     });
     super.initState();
   }
