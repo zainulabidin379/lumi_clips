@@ -17,7 +17,7 @@ class AppColors {
   static const Color kLightGrey = Color(0xFFE6E7E9);
   static const Color kGreen = Colors.green;
   static const Color kFacebookColor = Color(0xFF475A96);
-  static const Color kLinkedinColor = Color(0xFF007EBB);
+  static const Color kBlue = Color(0xFF007EBB);
   static const Color kAmberColor = Color(0xFFFFA200);
   static const Color kBrownColor = Color(0xFFB1750D);
   static const Color kYellowColor = Color.fromARGB(255, 255, 232, 21);

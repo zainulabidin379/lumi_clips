@@ -1,4 +1,4 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -6,11 +6,6 @@ import 'package:get/get.dart';
 import 'helpers/exports.dart';
 import 'views/splash/splash.dart';
 
-
-@pragma('vm:entry-point')
-Future<void> messageHandler(RemoteMessage message) async {
-  ('Received Background message:  ${message.notification!.body}').log();
-}
 
 final navigatorKey = GlobalKey<NavigatorState>();
 void main() async {
@@ -35,8 +30,8 @@ class MyApp extends StatelessWidget {
           fontFamily: AppFonts.regular,
           colorSchemeSeed: Ext.getMaterialColor(AppColors.kPrimary),
           iconButtonTheme: IconButtonThemeData(style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(AppColors.kWhite.withOpacity(0.3)))),
-          scaffoldBackgroundColor: AppColors.transparent,
-          appBarTheme: const AppBarTheme(backgroundColor: AppColors.transparent, surfaceTintColor: AppColors.transparent)),
+          scaffoldBackgroundColor: AppColors.kWhite,
+          appBarTheme: const AppBarTheme(backgroundColor: AppColors.kWhite, surfaceTintColor: AppColors.transparent)),
       defaultTransition: Transition.cupertino,
       home: const SplashScreen(),
     );

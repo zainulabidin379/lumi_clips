@@ -6,7 +6,7 @@ import '../helpers/exports.dart';
 class ShowSnackbar {
   static message(String msg) {
     Get.showSnackbar(GetSnackBar(
-      backgroundColor: AppColors.kLightBlue,
+      backgroundColor: AppColors.kPrimary,
       messageText: Text(
         msg,
         style: AppTextStyle.kMediumBodyText

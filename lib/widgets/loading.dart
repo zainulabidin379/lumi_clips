@@ -36,7 +36,7 @@ void loadingDialog(String? text) async {
         canPop: false,
         child: Container(
           padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(color: AppColors.kSecondary, borderRadius: BorderRadius.circular(20)),
+          decoration: BoxDecoration(color: AppColors.kWhite, borderRadius: BorderRadius.circular(20)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,

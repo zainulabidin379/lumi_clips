@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lumi_clips/helpers/exports.dart';
 
 class CustomSafeArea extends StatelessWidget {
   final Widget child;
@@ -7,16 +6,6 @@ class CustomSafeArea extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage(
-                ImageAssets.bg,
-              ),
-              fit: BoxFit.cover)),
-      child: SafeArea(child: child),
-    );
+    return SafeArea(bottom: false, child: child);
   }
 }
