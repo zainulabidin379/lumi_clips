@@ -1,88 +1,41 @@
 
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-const { Timestamp } = require('firebase-admin/firestore');
+const twilio = require("twilio");
 admin.initializeApp();
 
+const accountSid = "ACfc4dc5efb68760a40dfca492166ae4ce";
+const authToken = "d751f965b88a90fe35bd521e9c44e944";
+const twilioClient = twilio(accountSid, authToken);
 
-
-// On User Registration
+// // On User Registration
 exports.onUserRegistration = functions.firestore
-    .document("users/{id}")
+    .document("users/{phone}")
     .onCreate(async (snapshot) => {
         // user details.
         const user = snapshot.data();
 
-        var query = await admin.firestore().collection('clips').orderBy("priority").get();
-
-        let currentTime = new Date();
+        var query = await admin.firestore().collection('messages').orderBy("no").get();
         const docs = query.docs;
 
         for (let i = 0; i < docs.length; i++) {
             const doc = docs[i].data();
+            const sendAt = new Date(new Date().getTime() + (doc.delay * 60000)).toISOString();
 
-            // Schedule the notification with the current time
-            await admin.firestore().collection(`notifications`).add({
-                "title": doc.title.toString(),
-                "body": doc.body.toString(),
-                "payload": doc.url.toString(),
-                "token": user.token.toString(),
-                "timestamp": currentTime
-            });
-            currentTime.setMinutes(currentTime.getMinutes() + doc.nextDelay);
+            scheduleSMS(doc.body.toString(), user.phone.toString(), sendAt);
         }
     });
 
-
-// Send Notifications That are Scheduled
-exports.sendScheduledNotifications = functions.pubsub.schedule('* * * * *').onRun(async (context) => {
-
-    const query = await admin.firestore().collection("notifications")
-        .where("timestamp", '<=', admin.firestore.Timestamp.now()).get();
-
-    query.forEach(async snapshot => {
-        // Notification details.
-        const doc = snapshot.data();
-
-        const message = {
-            token: doc.token.toString(),
-            notification: {
-                title: doc.title.toString(),
-                body: doc.body.toString(),
-            },
-            data: {
-                payload: doc.payload.toString()
-            },
-            android: {
-                notification: {
-                    sound: 'default'
-                },
-            },
-            apns: {
-                headers: {
-                    "apns-priority": "10"
-                },
-                payload: {
-                    aps: {
-                        sound: 'default',
-                        category: "NEW_MESSAGE_CATEGORY"
-                    }
-                }
-            }
-        };
-
-        await admin
-            .messaging()
-            .send(message)
-            .then((response) => {
-                console.log("Notification Sent");
-                console.log(response.toString());
-            })
-            .catch((error) => {
-                console.log("Notification Error");
-                console.log(error.toString());
-            });
-
-        await admin.firestore().collection("notifications").doc(snapshot.id).delete();
-    });
-});
+const scheduleSMS = (message, to, sendAt) => {
+    twilioClient.messages
+        .create({
+            body: message,
+            messagingServiceSid: "MG3b6fa478cba42774ffc125e6288ac31f",
+            from: "+14242091800",
+            to: to,
+            scheduleType: 'fixed',
+            sendAt: sendAt,
+        })
+        .then((message) => console.log(`Scheduled message with SID: ${message.sid}`))
+        .catch((error) => console.error('Error scheduling SMS:', error));
+};

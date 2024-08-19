@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:lumi_clips/helpers/exports.dart';
 import 'package:lumi_clips/models/message.dart';
 import 'package:lumi_clips/views/home/add_message.dart';
+import 'package:lumi_clips/views/videos/videos.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../widgets/alert_dialog.dart';
@@ -23,6 +24,14 @@ class HomeScreen extends StatelessWidget {
               .copyWith(color: AppColors.kPrimary, fontWeight: FontWeight.bold, fontFamily: AppFonts.courgette, fontSize: 35),
         ),
         centerTitle: true,
+        leading: IconButton(
+            onPressed: () {
+              Get.to(() => const VideosScreen());
+            },
+            icon: const Icon(
+              Icons.video_collection,
+              color: AppColors.kBlue,
+            )).padLeft(10),
         actions: [
           IconButton(
               onPressed: () {
