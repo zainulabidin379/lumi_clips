@@ -4,8 +4,10 @@ const admin = require('firebase-admin');
 const twilio = require("twilio");
 admin.initializeApp();
 
-const accountSid = "ACfc4dc5efb68760a40dfca492166ae4ce";
-const authToken = "d751f965b88a90fe35bd521e9c44e944";
+const accountSid = functions.config().twilio.account_sid;
+const authToken = functions.config().twilio.auth_token;
+const messagingServiceSid = functions.config().twilio.messaging_service_sid;
+
 const twilioClient = twilio(accountSid, authToken);
 
 // // On User Registration
@@ -30,7 +32,7 @@ const scheduleSMS = (message, to, sendAt) => {
     twilioClient.messages
         .create({
             body: message,
-            messagingServiceSid: "MG3b6fa478cba42774ffc125e6288ac31f",
+            messagingServiceSid: messagingServiceSid,
             from: "+14242091800",
             to: to,
             scheduleType: 'fixed',
